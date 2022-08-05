@@ -31,9 +31,6 @@ object RetrofitModule {
         builder.readTimeout(30, TimeUnit.SECONDS)
         builder.connectTimeout(30, TimeUnit.SECONDS)
         builder.addInterceptor(interceptor)
-        builder.addInterceptor {
-            return@addInterceptor it.proceed(it.request().newBuilder().addHeader("Authorization", "Bearer ${MyConstants.GITHUB_API_TOKEN}").build())
-        }
         return builder.build()
     }
 
